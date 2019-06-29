@@ -1,10 +1,7 @@
-package com.paquet.essai02;
+package com.paquet.essai06;
 
 
-/**
- * Paquet qui permet de tester le JToggle bouton et sa couleur de fond.
- * @author claire
- */
+
 
 import java.awt.Dimension;
 import java.awt.Point;

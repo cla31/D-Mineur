@@ -1,8 +1,9 @@
-package com.paquet.essai02;
+package com.paquet.essai03;
 
 
 /**
- * Paquet qui permet de tester le JToggle bouton et sa couleur de fond.
+ * Paquet qui permet de tester le JToggle bouton et sa couleur de fond +
+ * l'ouverture des mines sur une case (au clic droit).
  * @author claire
  */
 
@@ -27,25 +28,17 @@ public abstract class FrameForDemoMaker implements Runnable{
 	}
 	
 	public void run(){
-		/**
-		 * Initialise la fenêtre
-		 */
+		//Initialise la fenêtre
 		frame = new JFrame(title);
 		frame.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
 		
-		/**
-		 * Positionne et redimensionne la fenêtre
-		 */
+		//Positionne et redimensionne la fenêtre
 		frame.setBounds(origin.x, origin.y, dimension.width, dimension.height);
 		
-		/**
-		 * Initialise les composants internes
-		 */
+		//Initialise les composants internes
 		init(frame);
 		
-		/**
-		 * Affiche la fenêtre
-		 */
+		//Affiche la fenêtre
 		frame.setVisible(true);
 	}
 	

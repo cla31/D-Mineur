@@ -1,19 +1,24 @@
-package com.paquet.essai02;
+package com.paquet.essai03;
 
 /**
- * Paquet qui permet de tester le JToggle bouton, ses evènements souris et sa couleur de fond.
+ * Paquet pour tester l'ouverture des mines sur une case (au clic droit)
  * @author claire
  */
 
 import java.awt.Color;
 import java.awt.event.MouseEvent;
 import java.awt.event.MouseListener;
+import java.io.IOException;
 import java.io.PrintStream;
 
 import javax.swing.BorderFactory;
+import javax.swing.ImageIcon;
 import javax.swing.JToggleButton;
 import javax.swing.SwingUtilities;
 import javax.swing.border.Border;
+
+
+
 
 /**
  * <p>ComposantCase correspond aux objets bouton.
@@ -27,12 +32,32 @@ import javax.swing.border.Border;
  */
 
 public class ComposantCase extends JToggleButton implements MouseListener {
+	
 	private String name;
 	/**
 	 * Insruction qui définit les bordures du bouton,
 	 * ainsi que la couleur de la bordure.
 	 */
 	Border lineBorder = BorderFactory.createLineBorder(Color.GRAY, 1);
+	private final static ImageIcon imgMine = loadImage("images/mine.png");
+	
+	
+	
+	
+	
+	/**
+	 *  Chargement de l'image
+	 * @param path
+	 * @return ResourceUtility.loadImage(path);
+	 */
+		private static ImageIcon loadImage(String path) {
+			try {
+				return ResourceUtility.loadImage(path);
+			} catch (IOException e) {
+				e.printStackTrace();
+				return null;
+			}
+		}
 
 	public ComposantCase(String str) {
 
@@ -44,6 +69,10 @@ public class ComposantCase extends JToggleButton implements MouseListener {
 		this.setOpaque(true);
 		
 		this.name=str;
+		
+    	
+		
+		
 		/**
 		 * Grâce à cette instruction, notre objet va s'écouter
 		 * pour repérer les actions de la souris(appui sur le bouton, entrée/sortie du  curseur)
@@ -51,7 +80,8 @@ public class ComposantCase extends JToggleButton implements MouseListener {
 		 */
 		this.addMouseListener(this);
 	}
-     /**
+    
+	/**
       * cliquer
       */
 	@Override
@@ -88,7 +118,7 @@ public class ComposantCase extends JToggleButton implements MouseListener {
 
 	@Override
 	public void mousePressed(MouseEvent e) {
-		if (this.isEnabled()) {
+//		if (this.isEnabled()) {
             /**
              * SwingUtilities?
              * Quand on crée un composant, un thread specifique est chargé de la gestion des évenements et
@@ -96,30 +126,55 @@ public class ComposantCase extends JToggleButton implements MouseListener {
              * toutes les modifications affectant ce composant doit etre faite par ce thread,
              * c'est là qu'intervient notre classe SwingUtilities. 
              */
-			if (SwingUtilities.isRightMouseButton(e)) {
-				System.out.println("Bouton droit pressé");
-				this.setBackground(Color.YELLOW);}
-		}
-
-		else{
-			this.setText("P");
-			this.setBackground(Color.BLACK);
-
-		}
+//			if (SwingUtilities.isRightMouseButton(e)) {
+//				System.out.println("Bouton droit pressé");
+//				this.setBackground(Color.YELLOW);}
+//		}
+//
+//		else{
+//			this.setText("P");
+//			this.setBackground(Color.BLACK);
+//
+//		}
 
 
 	}
 	/**
-	 * Relâcher le bouton (après avoir cliqué)
+	 * Relâcher le bouton
+	 *
 	 */
 
 	@Override
 	public void mouseReleased(MouseEvent e) {
 
+//		if(this.isEnabled()) {
+//			if (SwingUtilities.isRightMouseButton(e)) {
+//				System.out.println("Bouton droit relâché");
+//				this.setBackground(Color.RED);
+//			}
+//			else {
+//				this.setText("R");
+//				this.setEnabled(false);
+//				this.setBackground(Color.RED);
+//
+//			}
+//		}
+
+		
 		if(this.isEnabled()) {
 			if (SwingUtilities.isRightMouseButton(e)) {
 				System.out.println("Bouton droit relâché");
 				this.setBackground(Color.RED);
+				this.setIcon(imgMine);
+				// Ouvre toutes les cases
+//				this.rows = rows;
+//		     	this.cols = cols;
+//				for(int i = 0; i < this.rows; i++) {
+//		    		for(int j = 0; j < this.cols; j++) {
+//		    			
+//		   			    this.setIcon(imgMine);
+//		        	}
+//		    	}
 			}
 			else {
 				this.setText("R");
@@ -127,14 +182,26 @@ public class ComposantCase extends JToggleButton implements MouseListener {
 				this.setBackground(Color.RED);
 
 			}
-		}
-
-
 
 	}
+		}
+	
+
 	
 	 
-
+//	private void onLeftClick(Case c) {
+//		// Ouvre toutes les cases
+//		for(int i = 0; i < this.rows; i++) {
+//    		for(int j = 0; j < this.cols; j++) {
+//    			this.opened = true;
+//    			
+//   			    this.setIcon(imgMine);
+//        	}
+//    	}
+//	}
+	
+	
+	
 
 
 

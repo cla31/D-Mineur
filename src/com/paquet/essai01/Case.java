@@ -1,6 +1,8 @@
 package com.paquet.essai01;
 
-
+/**
+ * gère uniquement l'apparence et l'état de la case
+ */
 
 import java.io.IOException;
 import javax.swing.ImageIcon;
@@ -11,13 +13,17 @@ import javax.swing.JButton;
 public class Case extends JButton {
 	private static final long serialVersionUID = -8024370386357385856L;
 	
-	// Images utilisées
+	/**
+	 *  Images utilisées
+	 */
 	private final static ImageIcon imgDefault = loadImage("images/defaultCase.png");
 	private final static ImageIcon imgFlag = loadImage("images/flag.png");
 	private final static ImageIcon imgMine = loadImage("images/mine.png");
 	private final static ImageIcon[] imgsOpened = loadImages();
 		
-	// Propriétés de la case
+	/**
+	 *  Propriétés de la case
+	 */
 	private int value = 0;
 	private int posX;
 	private int posY;
@@ -25,7 +31,11 @@ public class Case extends JButton {
 	private boolean flaged = false;
 	private boolean opened = false;
 	
-	// Chargement des images
+	/**
+	 *  Chargement des images
+	 * @param path
+	 * @return null
+	 */
 	private static ImageIcon loadImage(String path) {
 		try {
 			return ResourceUtility.loadImage(path);
@@ -35,7 +45,10 @@ public class Case extends JButton {
 		}
 	}
 	
-	// Chargement des images nombres
+	/**
+	 *  Chargement des images nombres
+	 * @return null
+	 */
 	private static ImageIcon[] loadImages() {
 		ImageIcon[] images = new ImageIcon[9];
 		for(int i = 0; i <= 8; i++) {
@@ -48,14 +61,23 @@ public class Case extends JButton {
 		return images;
 	}
 	
-	// Constructeur
+	/**
+	 *  Constructeur
+	 * @param x
+	 * @param y
+	 */
 	public Case(int x, int y) {
 		this.posX = x;
 		this.posY = y;
 		this.setIcon(imgDefault);
     }
 
-	// Getters
+	/**
+	 *  Getters
+	 * @return l'objet lui-même + ses booléens flaged (si c'est un drapeau), 
+	 * opened (si la case est ouverte), isMine (si la case est une mine)
+	 * et la value qui correspond au nombre de mines adjacentes à la case.
+	 */
 	public boolean isFlaged() {
 		return this.flaged;
 	}
@@ -70,24 +92,32 @@ public class Case extends JButton {
 		return this.value;
 	}
 	
-	// Marque la case comme mine
+	/**
+	 *  Marque la case comme mine
+	 */
 	public void setMine() {
 		this.isMine = true;
 	}
 
-	// Marquer d'un drapeau la case
+	/**
+	 *  Marquer d'un drapeau la case
+	 */
 	public void flag() {
 		this.flaged = true;
 		this.setIcon(imgFlag);
 	}
 	
-	// Enlève le drapeau d'une case
+	/**
+	 *  Enlève le drapeau d'une case
+	 */
 	public void unflag() {
 		this.flaged = false;
 		this.setIcon(imgDefault);
 	}
 
-	// Ouvre une case
+	/**
+	 *  Ouvre une case
+	 */
 	public void open() {
 		this.opened = true;
 		
@@ -95,12 +125,19 @@ public class Case extends JButton {
 		else this.setIcon(imgsOpened[this.value]);
 	}
 	
-	// Affiche le nombre de mines adjacentes
+	/**
+	 *  Affiche le nombre de mines adjacentes
+	 * @param i
+	 */
 	public void setValue(int i) {
 		this.value = i;
 	}
 	
-	// Récupère la position de la case
+	/**
+	 *  Récupère la position de la case
+	 * @return la position X (axe abscisses ou lignes) et Y (ordonnées ou colonnes)
+	 */
+	
 	public int getPosX() {
 		return this.posX;
 	}

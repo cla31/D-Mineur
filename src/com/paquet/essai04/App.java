@@ -1,7 +1,7 @@
-package com.paquet.essai01;
+package com.paquet.essai04;
 
 /**
- * Essai code toto 4000
+ * Essai pour générer des smiley sur toute la grille après avoir cliqué sur l'une des cases.
  */
 
 import java.awt.Container;
@@ -15,8 +15,7 @@ import javax.swing.SwingUtilities;
 
 public class App extends FrameForDemoMaker {
 	
-	/**
-	 * Explications: l'objet Case gère uniquement l'apparence et les états de la case
+	/* Explications: l'objet Case gère uniquement l'apparence et les états de la case
 	 * l'object Game initialise un tableau de Case et gère les règles du jeu, les évènements et les relations entre ses cases
 	 * Nb: les cases n'utilisent que des images pour des raisons estétiques
 	 */
@@ -29,10 +28,7 @@ public class App extends FrameForDemoMaker {
 	private static final int MAXMINES = 30;
 	private Game game;
 	
-	/**
-	 * Constructeur
-	 * @throws IOException
-	 */
+	// Constructeur
     public App() throws IOException{
         super("Jeu du démineur");
         setDefaultBounds(100, 100, 50* COLUMNS, 50 * ROWS);
